@@ -1,0 +1,125 @@
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+:root {
+    --cell-size: 100px; 
+    --mark-size: calc(var(--cell-size) * .9);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, sans-serif;
+}
+
+.board {
+    width: 100vw;
+    height: 100vh;
+    padding: 10px;
+    
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+.cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    background: #2C859B;
+    margin: 2px;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell.X,
+.cell.O {
+    pointer-events: none;    
+}
+
+.cell.X::before,
+.cell.X::after,
+.board.X .cell:not(.X):hover::before,
+.board.X .cell:not(.X):hover::after {
+    content: '';
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+    background-color: #fff;
+    border-radius: 10px;
+    position: absolute;
+}
+
+.cell.X::before,
+.board.X .cell:not(.X):hover::before {
+    transform: rotate(45deg);
+}
+
+.cell.X::after,
+.board.X .cell:not(.X):hover::after {
+    transform: rotate(-45deg);
+}
+
+.cell.O::after,
+.board.O .cell:not(.O):hover::before {
+    content: '';
+    width: var(--mark-size);
+    height: var(--mark-size);
+    border: 12px solid#fff;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.board.O .cell:not(.O):hover::before{
+    border-color: lightblue;
+}
+
+.board.X .cell:not(.X):hover::before,
+.board.X .cell:not(.X):hover::after {
+    background-color: lightblue;
+}
+
+.winning-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.8em;
+}
+
+.winning-message.show {
+    display: flex;
+}
+
+.winning-message .winning-message-text {
+    color: white;
+    font-weight: 500;
+    font-size: 2.5em;
+}
+
+.winning-message .btn {
+    border: none;
+    font-size: 1em;
+    padding: 10px 15px;
+    border-radius: 7px;
+    font-weight: 700;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.winning-message .btn:hover {
+    background-color: #000;
+    color: #fff;
+}
