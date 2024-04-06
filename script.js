@@ -27,8 +27,6 @@ function startGame() {
   });
 }
 
-const audio = new Audio('music.mp3');
-
 function handleClick(e) {
     audio.play();
   const cell = e.target;
@@ -59,11 +57,9 @@ function showWinner() {
   if (isDraw()) {
     winning_message.classList.add("show");
     winning_message_text.innerHTML = "Draw";
-    audio.pause();
 } else {
     winning_message_text.innerHTML = `Winner is ${x_turn ? x_class : o_class}!`;
     winning_message.classList.add("show");
-    audio.pause();
   }
 }
 
