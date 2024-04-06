@@ -16,7 +16,7 @@ body {
 .board {
     width: 100vw;
     height: 100vh;
-    padding: 10px;
+    /* padding: 10px; */
     
     display: grid;
     grid-template-columns: repeat(3, auto);
@@ -34,7 +34,6 @@ body {
     border-radius: 10px;
     position: relative;
     cursor: pointer;
-    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,9 +45,7 @@ body {
 }
 
 .cell.X::before,
-.cell.X::after,
-.board.X .cell:not(.X):hover::before,
-.board.X .cell:not(.X):hover::after {
+.cell.X::after { 
     content: '';
     width: calc(var(--mark-size) * .15);
     height: var(--mark-size);
@@ -57,33 +54,21 @@ body {
     position: absolute;
 }
 
-.cell.X::before,
-.board.X .cell:not(.X):hover::before {
+.cell.X::before {
     transform: rotate(45deg);
 }
 
-.cell.X::after,
-.board.X .cell:not(.X):hover::after {
+.cell.X::after {
     transform: rotate(-45deg);
 }
 
-.cell.O::after,
-.board.O .cell:not(.O):hover::before {
+.cell.O::after {
     content: '';
     width: var(--mark-size);
     height: var(--mark-size);
     border: 12px solid#fff;
     border-radius: 50%;
     position: absolute;
-}
-
-.board.O .cell:not(.O):hover::before{
-    border-color: lightblue;
-}
-
-.board.X .cell:not(.X):hover::before,
-.board.X .cell:not(.X):hover::after {
-    background-color: lightblue;
 }
 
 .winning-message {
