@@ -28,7 +28,6 @@ function startGame() {
 }
 
 function handleClick(e) {
-    audio.play();
   const cell = e.target;
   const currentClass = x_turn ? x_class : o_class;
   cell.classList.add(currentClass);
